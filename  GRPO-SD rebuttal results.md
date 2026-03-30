@@ -45,8 +45,8 @@
 
 **Figure 1:** Teacher and policy evolution across training on Sachs. The teacher–policy L1 distance decreases from 0.099 to 0.045 to 0.021, showing progressively stronger alignment.
 
-![Figure1](./assets/Figure1.png)
+![Figure1](./Figures/Figure1.png)
 
 **Figure 2:** Relative weighted shares of the loss terms across training on Sachs. The plot shows a transition from pre-distillation exploration, to exploration with teacher alignment, and finally to post-distillation decay.
 
-![Figure2](./assets/Figure2.png)
+![Figure2](./Figures/Figure2.png)
