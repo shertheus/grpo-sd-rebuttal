@@ -51,7 +51,7 @@
 
 ![Figure2](./Figures/Figure2.png)
 
-**Table 3: Results on the Csuite[1] dataset with NAS applied.** We apply the same NAS strategy to all baselines for a fair comparison. The best result is shown in **bold**. Our method is **GRPO-SD (Ours)**.
+**Table 3: Results on the Csuite[1] dataset.** The best result is shown in **bold**. Our method is **GRPO-SD (Ours)**.
 
 | Method             |           FDR ↓ |           TPR ↑ |           FPR ↓ |           ACC ↑ |     Precision ↑ |        Recall ↑ |            F1 ↑ |           SHD ↓ |
 | ------------------ | --------------: | --------------: | --------------: | --------------: | --------------: | --------------: | --------------: | --------------: |
