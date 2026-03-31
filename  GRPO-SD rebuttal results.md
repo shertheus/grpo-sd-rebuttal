@@ -43,10 +43,31 @@
 | ABCNAS-RL (2025)   |     0.52(0.09) |     0.23(0.05) |     0.08(0.02) |     0.86(0.01) |     0.31(0.06) |     0.23(0.05) |     0.26(0.05) |     14.10(0.99) |
 | **GRPO-SD (Ours)** | **0.49(0.05)** |     0.64(0.09) |     0.08(0.02) | **0.89(0.01)** | **0.51(0.05)** |     0.64(0.09) | **0.56(0.03)** | **10.90(0.99)** |
 
-**Figure 1: Teacher and policy evolution across training on Sachs.** The teacher–policy L1 distance decreases from 0.099 to 0.045 to 0.021, showing progressively stronger alignment.
+**Figure 1: Stage-wise evolution of the self-distillation teacher and the current policy on the Sachs dataset.** Panels (a), (c), and (e) show the teacher edge-probability matrix at the early, middle, and late stages. Panels (b), (d), and (f) show the corresponding current policy, and panel (g) shows the true DAG. Green boxes mark representative true-edge locations. As training progresses, the teacher becomes more structured and the policy aligns more closely with it. This trend is also reflected in the teacher-policy L1 distance, which decreases from 0.099 to 0.045 and then to 0.021. The result supports our view that self-distillation provides effective soft structural guidance during training.
 
 ![Figure1](./Figures/Figure1.png)
 
-**Figure 2: Stage-wise evolution of the self-distillation teacher and the current policy on the Sachs dataset.** Panels (a), (c), and (e) show the teacher edge-probability matrix at the early, middle, and late stages. Panels (b), (d), and (f) show the corresponding current policy, and panel (g) shows the true DAG. Green boxes mark representative true-edge locations. As training progresses, the teacher becomes more structured and the policy aligns more closely with it. This trend is also reflected in the teacher-policy L1 distance, which decreases from 0.099 to 0.045 and then to 0.021. The result supports our view that self-distillation provides effective soft structural guidance during training.
+**Figure 2: Relative weighted shares of the four loss terms across training on the Sachs benchmark.** In **Stage I**, optimization is dominated by the entropy bonus and reference KL before self-distillation is activated. In **Stage II**, the self-distillation term becomes active and the policy term rises, reflecting joint exploration and alignment. In **Stage III**, the distillation contribution decays, while the policy and entropy terms remain dominant, consistent with the intended schedule. 
 
 ![Figure2](./Figures/Figure2.png)
+
+**Table 3: Results on the Csuite[1] dataset with NAS applied.** We apply the same NAS strategy to all baselines for a fair comparison. The best result is shown in **bold**. Our method is **GRPO-SD (Ours)**.
+
+| Method             |           FDR ↓ |           TPR ↑ |           FPR ↓ |           ACC ↑ |     Precision ↑ |        Recall ↑ |            F1 ↑ |           SHD ↓ |
+| ------------------ | --------------: | --------------: | --------------: | --------------: | --------------: | --------------: | --------------: | --------------: |
+| PC (2000)          |     0.64 ± 0.00 |     0.56 ± 0.00 |     0.12 ± 0.00 |     0.84 ± 0.00 |     0.36 ± 0.00 |     0.56 ± 0.00 |     0.43 ± 0.00 |    13.00 ± 0.00 |
+| GES (2002)         |     0.39 ± 0.00 |     1.22 ± 0.00 |     0.26 ± 0.00 |     0.86 ± 0.00 |     0.44 ± 0.00 |     0.89 ± 0.00 |     0.59 ± 0.00 |    11.00 ± 0.00 |
+| ICALiNGAM (2006)   |     0.44 ± 0.00 |     0.56 ± 0.00 |     0.15 ± 0.00 |     0.90 ± 0.00 |     0.56 ± 0.00 |     0.56 ± 0.00 |     0.56 ± 0.00 |     8.00 ± 0.00 |
+| Notears (2018)     |     0.43 ± 0.00 |     0.44 ± 0.00 |     0.04 ± 0.00 |     0.90 ± 0.00 |     0.57 ± 0.00 |     0.44 ± 0.00 |     0.50 ± 0.00 |     8.00 ± 0.00 |
+| GraNDAG (2019)     |     0.64 ± 0.04 |     0.49 ± 0.06 |     0.11 ± 0.01 |     0.85 ± 0.01 |     0.36 ± 0.04 |     0.49 ± 0.06 |     0.41 ± 0.05 |    15.30 ± 1.34 |
+| GOLEM (2020)       |     0.55 ± 0.00 |     0.56 ± 0.00 |     0.08 ± 0.00 |     0.88 ± 0.00 |     0.45 ± 0.00 |     0.56 ± 0.00 |     0.50 ± 0.00 |    10.00 ± 0.00 |
+| DiffAN (2022)      |     0.67 ± 0.08 |     0.48 ± 0.09 |     0.12 ± 0.02 |     0.83 ± 0.03 |     0.33 ± 0.08 |     0.48 ± 0.09 |     0.39 ± 0.09 |    13.60 ± 2.22 |
+| CaPS (2024)        |     0.33 ± 0.03 | **0.78 ± 0.00** |     0.13 ± 0.02 |     0.93 ± 0.01 |     0.67 ± 0.03 | **0.78 ± 0.00** |     0.72 ± 0.02 |     5.50 ± 0.53 |
+| CORL (2021)        |     0.59 ± 0.04 |     0.41 ± 0.05 |     0.08 ± 0.01 |     0.87 ± 0.01 |     0.41 ± 0.04 |     0.41 ± 0.05 |     0.41 ± 0.04 |    10.70 ± 0.82 |
+| COSMO (2024)       |     0.48 ± 0.13 |     0.56 ± 0.12 |     0.07 ± 0.02 |     0.89 ± 0.03 |     0.52 ± 0.13 |     0.56 ± 0.12 |     0.54 ± 0.12 |     8.70 ± 2.36 |
+| SDCD (2024)        |     0.25 ± 0.00 |     0.67 ± 0.00 |     0.03 ± 0.00 |     0.94 ± 0.00 |     0.75 ± 0.00 |     0.67 ± 0.00 |     0.71 ± 0.00 |     5.00 ± 0.00 |
+| ALIAS (2025)       |     0.12 ± 0.00 | **0.78 ± 0.00** |     0.01 ± 0.00 |     0.96 ± 0.00 |     0.88 ± 0.00 | **0.78 ± 0.00** |     0.82 ± 0.00 |     3.00 ± 0.00 |
+| ABCNAS-RL (2025)   |     0.22 ± 0.00 | **0.78 ± 0.00** |     0.07 ± 0.00 |     0.90 ± 0.00 |     0.54 ± 0.00 | **0.78 ± 0.00** |     0.64 ± 0.00 |     8.00 ± 0.00 |
+| **GRPO-SD (Ours)** | **0.00 ± 0.00** | **0.78 ± 0.00** | **0.00 ± 0.00** | **0.98 ± 0.00** | **1.00 ± 0.00** | **0.78 ± 0.00** | **0.88 ± 0.00** | **2.00 ± 0.00** |
+
+[1] Deep End-to-end Causal Inference. TMLR 2024
