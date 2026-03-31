@@ -43,10 +43,10 @@
 | ABCNAS-RL (2025)   |     0.52(0.09) |     0.23(0.05) |     0.08(0.02) |     0.86(0.01) |     0.31(0.06) |     0.23(0.05) |     0.26(0.05) |     14.10(0.99) |
 | **GRPO-SD (Ours)** | **0.49(0.05)** |     0.64(0.09) |     0.08(0.02) | **0.89(0.01)** | **0.51(0.05)** |     0.64(0.09) | **0.56(0.03)** | **10.90(0.99)** |
 
-**Figure 1:** Teacher and policy evolution across training on Sachs. The teacher–policy L1 distance decreases from 0.099 to 0.045 to 0.021, showing progressively stronger alignment.
+**Figure 1: Teacher and policy evolution across training on Sachs.** The teacher–policy L1 distance decreases from 0.099 to 0.045 to 0.021, showing progressively stronger alignment.
 
 ![Figure1](./Figures/Figure1.png)
 
-**Figure 2:** Relative weighted shares of the loss terms across training on Sachs. The plot shows a transition from pre-distillation exploration, to exploration with teacher alignment, and finally to post-distillation decay.
+**Figure 2: Stage-wise evolution of the self-distillation teacher and the current policy on the Sachs dataset.** Panels (a), (c), and (e) show the teacher edge-probability matrix at the early, middle, and late stages. Panels (b), (d), and (f) show the corresponding current policy, and panel (g) shows the true DAG. Green boxes mark representative true-edge locations. As training progresses, the teacher becomes more structured and the policy aligns more closely with it. This trend is also reflected in the teacher-policy L1 distance, which decreases from 0.099 to 0.045 and then to 0.021. The result supports our view that self-distillation provides effective soft structural guidance during training.
 
 ![Figure2](./Figures/Figure2.png)
